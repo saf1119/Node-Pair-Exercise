@@ -1,11 +1,12 @@
-module.exports = function () {
+const done = require('./bash')
+
+console.log(done)
+
+module.exports = function (done) {
 	process.stdin.on('data', (data) => {
 	const cmd = data.toString().trim();
 	if(cmd === 'pwd'){
-		process.stdout.write(process.cwd())
-		process.stdout.write('\n');
+		done(process.cwd() + '\n');
 	}
-	process.stdout.write('You typed: ' + cmd);
-	process.stdout.write('\nprompt > ');
  });
 }
